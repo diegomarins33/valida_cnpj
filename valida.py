@@ -25,11 +25,8 @@ def calcula_primeiro_digito(temp_cnpj):
         cont += 1
     soma = sum(new_lista)
     numero = 11 - (soma % 11)
-    if numero > 9:
-        numero = 0
-        cnpj_convertido.append(numero)
-    else:
-        cnpj_convertido.append(numero)
+    numero = numero if numero <= 9 else 0
+    cnpj_convertido.append(numero)
     return cnpj_convertido
 
 
@@ -44,11 +41,8 @@ def calcula_segundo_digito(primeiro_digito):
     soma = sum(new_lista)
     numero = 11 - (soma % 11)
     segundo_digito = list.copy(primeiro_digito)
-    if numero > 9:
-        numero = 0
-        segundo_digito.append(numero)
-    else:
-        segundo_digito.append(numero)
+    numero = numero if numero <= 9 else 0
+    segundo_digito.append(numero)
     return segundo_digito
 
 
@@ -58,8 +52,3 @@ def verifica_cnpj(new_cnpj, segundo_digito):
         return 'CNPJ Válido!'
     else:
         return 'CNPJ Inválido!'
-
-
-# if __name__ == '__main__':
-#     calculo = calcula_primeiro_digito([0, 4, 2, 5, 2, 0, 1, 1, 0, 0, 0, 1])
-#     print(calculo)
